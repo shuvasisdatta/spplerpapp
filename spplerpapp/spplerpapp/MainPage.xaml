@@ -4,11 +4,26 @@
              xmlns:local="clr-namespace:spplerpapp"
              x:Class="spplerpapp.MainPage">
 
-    <StackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+        <Grid BackgroundColor="#4D6082" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <ImageButton Grid.Column="0" Source="drawable/back_icon" BorderColor="Transparent" BackgroundColor="Transparent" Aspect="AspectFit"  HorizontalOptions="Start" Clicked="OnBackButtonClicked" />
+            <!--<Button Grid.Column="0" Text="Back" HorizontalOptions="Start" Clicked="OnBackButtonClicked" />
+            --><Label Grid.Column="1" Text="SPPL ERP" FontAttributes="Bold" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" />
+        </Grid>
+        <StackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
+            <ActivityIndicator x:Name="indicator"></ActivityIndicator>
+            <Label x:Name="labelLoading" Text="Loading..." TextColor="Chocolate" IsVisible="false" />
+            <WebView x:Name="webView" HeightRequest="1000" WidthRequest="1000" Source="http://www.spplerp.tk" Navigated="webviewNavigated" Navigating="webviewNavigating" />
+        </StackLayout>
+    </Grid>
 
 </ContentPage>
